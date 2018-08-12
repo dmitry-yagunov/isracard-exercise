@@ -9,7 +9,8 @@ class App extends Component {
 		this.state = {
 			repos: [],
 			searchField: '',
-			bookmarks: []
+			bookmarks: [],
+			showOnlyBookmarked: false
 		}
 	}
 
@@ -36,16 +37,37 @@ class App extends Component {
 		}
 	}
 
+	onOnlyBookmarkedChange = (event) => {
+		this.setState({showOnlyBookmarked: event.target.checked})
+	}
+
 	render() {
 		const { repos, bookmarks } = this.state;
+		const filteredRepos = !this.state.showOnlyBookmarked ? 
+			repos : 
+			repos.filter(repo => {
+				return this.state.bookmarks.includes(repo.id.toString())
+		});
+
+		console.log(this.state.bookmarks);
+		console.log(filteredRepos);
+
 		
 		return (
 			<div className='tc'>
 				<h1>git repositories</h1>
 				<SearchBox searchChange = {this.onSearchChange}/>
 				<button onClick = {this.onSearchClick}>Search</button>
+				<div>
+					<input type="checkbox" 
+						   id="onlyBookmarked" 
+						   name="checkOnlyBookmarked" 
+						   value="onlyBookmarkedRepos"
+						   onChange = { this.onOnlyBookmarkedChange}/>
+    				<label>Show only bookmarked repos?</label>
+				</div>
 				<Scroll>
-					<CardList repos = {repos} 
+					<CardList repos = { filteredRepos } 
 					          bookmarkClick = { this.onBookmarkClick} 
 					          bookmarks = { bookmarks } />
 				</Scroll>
