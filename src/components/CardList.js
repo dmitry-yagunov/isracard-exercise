@@ -2,11 +2,6 @@ import React from 'react';
 import Card from './Card'
 
 const CardList = ({ repos, bookmarkClick, bookmarks }) => {
-	if (bookmarks.length) {
-		console.log(bookmarks);
-		console.log(bookmarks.includes(repos[0].id.toString()));
-	}
-	console.log(bookmarks);
 	return !repos.length ? 
 		<h1>No results</h1> : 
 		( 

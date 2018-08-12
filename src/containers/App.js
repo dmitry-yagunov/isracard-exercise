@@ -28,14 +28,12 @@ class App extends Component {
 
 	onBookmarkClick = (event) => {
 		var newBookmarkId = event.target.id.split("-")[2];
-		//console.log(newBookmarkId);
+		
 		if (!this.state.bookmarks.includes(newBookmarkId)) {
 			console.log("ADDED " + newBookmarkId);
 			this.state.bookmarks.push(newBookmarkId);
 			this.setState({bookmarks: this.state.bookmarks });
 		}
-
-		//console.log(this.state.bookmarks);
 	}
 
 	render() {
@@ -47,7 +45,9 @@ class App extends Component {
 				<SearchBox searchChange = {this.onSearchChange}/>
 				<button onClick = {this.onSearchClick}>Search</button>
 				<Scroll>
-					<CardList repos = {repos} bookmarkClick = { this.onBookmarkClick} bookmarks = { bookmarks} />
+					<CardList repos = {repos} 
+					          bookmarkClick = { this.onBookmarkClick} 
+					          bookmarks = { bookmarks } />
 				</Scroll>
 			</div>
 		);
