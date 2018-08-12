@@ -7,6 +7,7 @@ const Card = ({ name, id, avatarUrl, bookmarkClick, bookmarked }) => {
 			<img alt='avatar' src={avatarUrl} height="50px" width="50px"/>
 			<div>
 				<h2>{name}</h2>
+				{ /* If bookmarked show star icon, otherwise show bookmark button*/}
 				{ !bookmarked ? <button id={"bookmark-button-" + id} onClick = {bookmarkClick}>Bookmark</button> : null }
 				{ bookmarked ? <img alt="bookmarked" src= { starImage }/> : null }
 			</div>
