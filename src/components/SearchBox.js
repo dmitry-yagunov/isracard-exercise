@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchBox = ({ searchChange }) => {
+const SearchBox = ({ searchChange, keyPress }) => {
 	return (
 		<div className='pa2'>
 			<input 
@@ -8,6 +8,7 @@ const SearchBox = ({ searchChange }) => {
 				type='search' 
 				placeholder='Search git repositories'
 				onChange = {searchChange}
+				onKeyPress = {keyPress}
 			/>
 		</div>
 	);

@@ -31,7 +31,6 @@ class App extends Component {
 		var newBookmarkId = event.target.id.split("-")[2];
 		
 		if (!this.state.bookmarks.includes(newBookmarkId)) {
-			console.log("ADDED " + newBookmarkId);
 			this.state.bookmarks.push(newBookmarkId);
 			this.setState({bookmarks: this.state.bookmarks });
 		}
@@ -39,6 +38,12 @@ class App extends Component {
 
 	onOnlyBookmarkedChange = (event) => {
 		this.setState({showOnlyBookmarked: event.target.checked})
+	}
+
+	onKeyPress = (event) => {
+		if (event.key === "Enter") {
+			this.onSearchClick(event);
+		}
 	}
 
 	render() {
@@ -49,14 +54,10 @@ class App extends Component {
 				return this.state.bookmarks.includes(repo.id.toString())
 		});
 
-		console.log(this.state.bookmarks);
-		console.log(filteredRepos);
-
-		
 		return (
 			<div className='tc'>
 				<h1>git repositories</h1>
-				<SearchBox searchChange = {this.onSearchChange}/>
+				<SearchBox searchChange = {this.onSearchChange} keyPress  = {this.onKeyPress}/>
 				<button onClick = {this.onSearchClick}>Search</button>
 				<div>
 					<input type="checkbox" 
