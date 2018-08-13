@@ -1,3 +1,6 @@
+1) I've used React state for session management, tachyons package for CSS
+2) Run the project using npm start
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
